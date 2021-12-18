@@ -1,8 +1,6 @@
 .game-letters-container {
   display: flex;
   justify-content: center;
+  list-style: none;
 
-  p {
-    text-align: center;
-  }
 }

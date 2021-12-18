@@ -1,6 +1,20 @@
 .key {
-  width: 30px;
+  width: 40px;
+  height: 40px;
   font-size: 20px;
-
   margin: 5px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.correct {
+  background-color: green;
+  color: white;
+  pointer-events: none;
+}
+
+.incorrect {
+  background-color: red;
+  color: white;
+  pointer-events: none;
 }

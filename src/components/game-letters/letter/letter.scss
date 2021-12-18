@@ -1,0 +1,20 @@
+.game-letter {
+  text-decoration: none;
+  min-width: 65px;
+  min-height: 65px;
+  color: transparent;
+  background-color: #d2d2d2;
+  border-radius: 5px;
+  margin: 5px;
+  align-self: center;
+  align-content: center;
+  bottom: 0;
+  text-align: center;
+  padding: 30px 1px 0 1px;
+}
+
+.show {
+  background-color: green;
+  transition-duration: 1s;
+  color: white;
+}

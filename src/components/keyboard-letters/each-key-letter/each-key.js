@@ -1,14 +1,18 @@
 import './each-key.scss';
-import React from 'react';
+import React, {useContext} from 'react';
+import {appContext} from '../../../context/context.js';
 
 const EachKey = ({letterKey}) => {
 
+  const {actions, data} = useContext(appContext);
+
   const handleClick = (e) => {
-    console.log(e.target.innerHTML)
+    actions.checkGuess(e.target.innerHTML)
   }
 
+
   return (
-    <button onClick={handleClick} className='key'>{letterKey}</button>
+    <button onClick={handleClick} className={ data.correctKeys.includes(letterKey) ? 'key correct' : 'key' }>{letterKey}</button>
   )
 }
 
