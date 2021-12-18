@@ -12,7 +12,7 @@ const EachKey = ({letterKey}) => {
 
 
   return (
-    <button onClick={handleClick} className={ data.correctKeys.includes(letterKey) ? 'key correct' : 'key' }>{letterKey}</button>
+    <button onClick={handleClick} className={ data.selectedKey.includes(letterKey) ? 'key chosen' : 'key' }>{letterKey}</button>
   )
 }
 

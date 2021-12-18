@@ -5,16 +5,14 @@
   margin: 5px;
   cursor: pointer;
   border: 1px solid black;
+
+  &:hover {
+    background-color: grey;
+  }
 }
 
-.correct {
-  background-color: green;
-  color: white;
-  pointer-events: none;
-}
-
-.incorrect {
-  background-color: red;
+.chosen {
+  background-color: grey;
   color: white;
   pointer-events: none;
 }

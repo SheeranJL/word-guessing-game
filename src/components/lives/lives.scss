@@ -1,0 +1,19 @@
+.lives {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .heart {
+    color: red;
+    font-size: 50px;
+  }
+
+  .heading {
+    font-size: 30px;
+  }
+
+  .lost-heart {
+    display: none;
+  }
+}
