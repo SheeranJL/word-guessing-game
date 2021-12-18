@@ -1,0 +1,10 @@
+.keyboard-letter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4%;
+
+  .keyrow {
+    padding: 0.3rem;
+  }
+}
