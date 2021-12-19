@@ -52,16 +52,17 @@ export const Provider = (props) => {
     if (incorrectCount >= 3) {
       setGameOver(true);
       setPauseTimer(true)
-      setTimer(60);
     } else if (correctCount >= scoreToWin && scoreToWin !== 0) {
       setGameWin(true);
       setPauseTimer(true)
-      setTimer(60);
+    } else if (timer === 0) {
+      setPauseTimer(true);
+      setGameOver(true);
     }
 
     setScoreToWin(removeDuplicates.length)
 
-  }, [incorrectCount, firstRender, gameOver, correctCount, gameWin]);
+  }, [incorrectCount, firstRender, gameOver, correctCount, gameWin, timer]);
 
   const checkGuess = (guess) => {
     const doesLetterExist = gameKey.find((letter) => letter === guess)
@@ -97,6 +98,7 @@ export const Provider = (props) => {
 
 
   function startTimer() {
+
     if (!pauseTimer) {
       setTimeout( () => {
         setTimer(timer - 1)
@@ -104,10 +106,10 @@ export const Provider = (props) => {
     }
   }
 
+
+
   startTimer()
 
-
-  console.log(pauseTimer.current)
 
 
 
