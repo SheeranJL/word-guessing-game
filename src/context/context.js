@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {createContext, useEffect, useState, useRef} from 'react';
 
 export const appContext = createContext();
 
@@ -24,17 +24,48 @@ export const Provider = (props) => {
   const [gameOver, setGameOver] = useState(false);
   const [gameWin, setGameWin] = useState(false);
   const [timer, setTimer] = useState(null);
+  const [pauseTimer, setPauseTimer] = useState(true);
+
 
   const filterSpaces = gameKey.filter((key, index) => key !== ' ')
   const removeDuplicates = filterSpaces.filter((item, index) => filterSpaces.indexOf(item) === index)
 
 
+
+
+
+  useEffect( () => {
+    if (firstRender === true || gameOver === true || gameWin === true || pauseTimer === true) {
+      const randomNum = Math.floor(Math.random() * phrases.length)
+      const phrase = phrases[randomNum]
+      setGameKey(phrase.split(''))
+      setCorrectKeys([]);
+      setCorrectCount(0);
+      setIncorrectCount(0);
+      setSelectedKey([]);
+      setFirstRender(false);
+      setTimer(60);
+      setPauseTimer(true);
+      console.log('rendering')
+    }
+
+    if (incorrectCount >= 3) {
+      setGameOver(true);
+      setPauseTimer(true)
+      setTimer(60);
+    } else if (correctCount >= scoreToWin && scoreToWin !== 0) {
+      setGameWin(true);
+      setPauseTimer(true)
+      setTimer(60);
+    }
+
+    setScoreToWin(removeDuplicates.length)
+
+  }, [incorrectCount, firstRender, gameOver, correctCount, gameWin]);
+
   const checkGuess = (guess) => {
-
     const doesLetterExist = gameKey.find((letter) => letter === guess)
-
       if (doesLetterExist === guess) {
-
         if (correctKeys) {
           setCorrectKeys([
             ...correctKeys,
@@ -60,31 +91,24 @@ export const Provider = (props) => {
           guess
         ])
       }
+      setPauseTimer(false);
   }
 
 
-  useEffect( () => {
 
-    if (firstRender === true || gameOver === true || gameWin === true) {
-      const randomNum = Math.floor(Math.random() * phrases.length)
-      const phrase = phrases[randomNum]
-      setGameKey(phrase.split(''))
-      setCorrectKeys([]);
-      setCorrectCount(0);
-      setIncorrectCount(0);
-      setSelectedKey([]);
-      setFirstRender(false);
+  function startTimer() {
+    if (!pauseTimer) {
+      setTimeout( () => {
+        setTimer(timer - 1)
+      }, 1000)
     }
+  }
 
-    if (incorrectCount >= 3) {
-      setGameOver(true);
-    } else if (correctCount >= scoreToWin && scoreToWin !== 0) {
-      setGameWin(true);
-    }
+  startTimer()
 
-    setScoreToWin(removeDuplicates.length)
 
-  }, [incorrectCount, firstRender, gameOver, correctCount, gameWin]);
+  console.log(pauseTimer.current)
+
 
 
   return (
@@ -99,12 +123,15 @@ export const Provider = (props) => {
         gameWin,
         scoreToWin,
         firstRender,
+        timer
       },
       actions: {
         checkGuess,
         setFirstRender,
         setGameOver,
         setGameWin,
+        startTimer,
+        setPauseTimer
       }
     }}>
       {props.children}
