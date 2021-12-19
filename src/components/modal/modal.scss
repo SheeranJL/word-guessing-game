@@ -7,8 +7,26 @@
   border: 2px solid black;
   align-self: center;
   position: absolute;
-  background-color: red;
   height: 40%;
   border-radius: 5%;
 
+
+  .modal-message {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .modal-button {
+    width: 30%;
+    height: 50px;
+  }
+}
+
+.win {
+  background-color: green;
+}
+
+.lose {
+  background-color: red;
 }

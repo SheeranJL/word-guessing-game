@@ -11,7 +11,7 @@ import Modal from '../modal/modal.js';
 
 const MainPage = () => {
 
-  const {data: {gameOver}} = useContext(appContext);
+  const {data: {gameOver, gameWin}} = useContext(appContext);
 
   return (
     <div className='main-page'>
@@ -20,7 +20,10 @@ const MainPage = () => {
       <KeyboardLetters />
       <LivesAndTime />
       {
-        gameOver ? <Modal /> : null
+        gameOver ? <Modal message='YOU LOSE!' /> : null
+      }
+      {
+        gameWin ? <Modal message='YOU WIN!' /> : null
       }
     </div>
   )

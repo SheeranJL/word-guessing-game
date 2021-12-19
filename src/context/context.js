@@ -17,11 +17,17 @@ export const Provider = (props) => {
   const [gameKey, setGameKey] = useState([]);
   const [correctKeys, setCorrectKeys] = useState([]);
   const [correctCount, setCorrectCount] = useState(0);
+  const [scoreToWin, setScoreToWin] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
   const [selectedKey, setSelectedKey] = useState([]);
   const [firstRender, setFirstRender] = useState(true);
-  const [gameOver, setGameOver] = useState(null);
+  const [gameOver, setGameOver] = useState(false);
+  const [gameWin, setGameWin] = useState(false);
   const [timer, setTimer] = useState(null);
+
+  const filterSpaces = gameKey.filter((key, index) => key !== ' ')
+  const removeDuplicates = filterSpaces.filter((item, index) => filterSpaces.indexOf(item) === index)
+
 
   const checkGuess = (guess) => {
 
@@ -57,10 +63,9 @@ export const Provider = (props) => {
   }
 
 
-
   useEffect( () => {
 
-    if (firstRender === true || gameOver === true) {
+    if (firstRender === true || gameOver === true || gameWin === true) {
       const randomNum = Math.floor(Math.random() * phrases.length)
       const phrase = phrases[randomNum]
       setGameKey(phrase.split(''))
@@ -68,17 +73,18 @@ export const Provider = (props) => {
       setCorrectCount(0);
       setIncorrectCount(0);
       setSelectedKey([]);
-      setGameOver(true);
       setFirstRender(false);
     }
 
     if (incorrectCount >= 3) {
-      console.log('game over');
       setGameOver(true);
+    } else if (correctCount >= scoreToWin && scoreToWin !== 0) {
+      setGameWin(true);
     }
 
-  }, [incorrectCount, firstRender, gameOver])
+    setScoreToWin(removeDuplicates.length)
 
+  }, [incorrectCount, firstRender, gameOver, correctCount, gameWin]);
 
 
   return (
@@ -89,12 +95,16 @@ export const Provider = (props) => {
         incorrectCount,
         correctKeys,
         selectedKey,
-        gameOver
+        gameOver,
+        gameWin,
+        scoreToWin,
+        firstRender,
       },
       actions: {
         checkGuess,
         setFirstRender,
-        setGameOver
+        setGameOver,
+        setGameWin,
       }
     }}>
       {props.children}

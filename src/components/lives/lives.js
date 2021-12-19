@@ -6,8 +6,6 @@ const Lives = () => {
 
   const {data:{incorrectCount}} = useContext(appContext);
 
-  console.log(incorrectCount);
-
   return (
 
     <div className='lives'>

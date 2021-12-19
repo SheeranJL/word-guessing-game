@@ -2,20 +2,25 @@ import React, {useContext} from 'react';
 import {appContext} from '../../context/context.js'
 import './modal.scss';
 
-const Modal = () => {
+const Modal = ({message}) => {
 
   const {data, actions} = useContext(appContext)
 
   const resetGame = () => {
-    actions.setGameOver(false);
+    if (message === 'YOU LOSE!') {
+      actions.setGameOver(false);
+    } else {
+      actions.setGameWin(false);
+    }
   }
 
   return (
-    <div className='modal-container'>
-      <h3>You Lose!</h3>
-      <span>Time remaining: 00:10</span>
-      <button onClick={resetGame}>Play again</button>
+    <>
+    <div className={message === 'YOU LOSE!' ? 'modal-container lose' : 'modal-container win'}>
+      <h3 className='modal-message'>{message}</h3>
+      <button className='modal-button' onClick={resetGame}>Play again</button>
     </div>
+    </>
   )
 }
 
