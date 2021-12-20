@@ -1,32 +1,48 @@
-.modal-container {
+
+.modal-overlay {
   display: flex;
-  flex-direction: column;
-  width: 30%;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
-  align-self: center;
   position: absolute;
-  height: 40%;
-  border-radius: 5%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .5);
+  transition: opacity .2s ease;
 
-
-  .modal-message {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  .modal-button {
+  .modal-container {
+    display: flex;
+    flex-direction: column;
     width: 30%;
-    height: 50px;
-  }
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    align-self: center;
+    position: absolute;
+    height: 40%;
+    border-radius: 5%;
 
-  .face {
-    font-size: 100px;
+
+    .modal-message {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .modal-button {
+      width: 30%;
+      height: 50px;
+    }
+
+    .face {
+      font-size: 100px;
+    }
+
   }
 
 }
+
 
 .win {
   background-color: green;

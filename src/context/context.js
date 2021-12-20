@@ -5,12 +5,12 @@ export const appContext = createContext();
 export const Provider = (props) => {
 
   const phrases = [
-    'test phrase one',
-    'test phrase two',
-    'test phrase three',
-    'test phrase four',
-    'test phrase five',
-    'test phrase six'
+    'an arm and a leg',
+    'a piece of cake',
+    'back to square one',
+    'cut to the chase',
+    'burst your bubble',
+    'close but no cigar'
   ];
 
   // const [phrase, setPhrase] = useState('')
@@ -28,23 +28,21 @@ export const Provider = (props) => {
 
 
   const filterSpaces = gameKey.filter((key, index) => key !== ' ')
-  const removeDuplicates = filterSpaces.filter((item, index) => filterSpaces.indexOf(item) === index)
-
-
+  const removeDuplicates = filterSpaces.filter((item, index) => filterSpaces.indexOf(item) === index);
 
 
 
   useEffect( () => {
     if (firstRender === true || gameOver === true || gameWin === true || pauseTimer === true) {
       const randomNum = Math.floor(Math.random() * phrases.length)
-      const phrase = phrases[randomNum]
+      const phrase = phrases[randomNum];
       setGameKey(phrase.split(''))
       setCorrectKeys([]);
       setCorrectCount(0);
       setIncorrectCount(0);
       setSelectedKey([]);
       setFirstRender(false);
-      setTimer(60);
+      setTimer(1222);
       setPauseTimer(true);
       console.log('rendering')
     }
@@ -65,8 +63,15 @@ export const Provider = (props) => {
   }, [incorrectCount, firstRender, gameOver, correctCount, gameWin, timer]);
 
   const checkGuess = (guess) => {
-    const doesLetterExist = gameKey.find((letter) => letter === guess)
+
+    const doesLetterExist = gameKey.find((letter => letter.toLowerCase() === guess.toLowerCase()))
+
+
       if (doesLetterExist === guess) {
+
+        console.log(doesLetterExist.toLowerCase())
+        console.log(guess.toLowerCase())
+
         if (correctKeys) {
           setCorrectKeys([
             ...correctKeys,
@@ -85,6 +90,7 @@ export const Provider = (props) => {
             guess
           ])
         }
+
       } else {
         setIncorrectCount(incorrectCount + 1);
         setSelectedKey([

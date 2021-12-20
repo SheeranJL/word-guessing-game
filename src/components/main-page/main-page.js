@@ -19,12 +19,14 @@ const MainPage = () => {
       <GameLetters />
       <KeyboardLetters />
       <LivesAndTime />
-      {
-        gameOver ? <Modal message='YOU LOSE!' /> : null
-      }
-      {
-        gameWin ? <Modal message='YOU WIN!' /> : null
-      }
+
+        {
+          gameOver ? <Modal message='YOU LOSE!' /> : null
+        }
+        {
+          gameWin ? <Modal message='YOU WIN!' /> : null
+        }
+
     </div>
   )
 }

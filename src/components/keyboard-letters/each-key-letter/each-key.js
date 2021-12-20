@@ -8,7 +8,6 @@ const EachKey = ({letterKey}) => {
 
   const handleClick = (e) => {
     actions.checkGuess(e.target.innerHTML)
-    actions.setPauseTimer(false);
   }
 
 

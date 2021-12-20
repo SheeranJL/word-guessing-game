@@ -15,10 +15,12 @@ const Modal = ({message}) => {
   }
 
   return (
-    <div className={message === 'YOU LOSE!' ? 'modal-container lose' : 'modal-container win'}>
-      {message === 'YOU LOSE!' ? <span className='face'>&#9785;</span> : <span className='face'>&#9786;</span>}
-      <h3 className='modal-message'>{message}</h3>
-      <button className='modal-button' onClick={resetGame}>Play again</button>
+    <div className='modal-overlay'>
+      <div className={message === 'YOU LOSE!' ? 'modal-container lose' : 'modal-container win'}>
+        {message === 'YOU LOSE!' ? <span className='face'>&#9785;</span> : <span className='face'>&#9786;</span>}
+        <h3 className='modal-message'>{message}</h3>
+        <button className='modal-button' onClick={resetGame}>Play again</button>
+      </div>
     </div>
   )
 }

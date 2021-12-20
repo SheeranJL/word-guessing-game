@@ -7,7 +7,7 @@ const GameLetter = ({letter, space}) => {
   const {data} = useContext(appContext);
 
   return (
-    <li className={ data.correctKeys.includes(letter) ? 'game-letter show' : 'game-letter'}>
+    <li className={ data.correctKeys.includes(letter.toLowerCase()) ? 'game-letter show' : 'game-letter'}>
     {letter}
     </li>
   )
