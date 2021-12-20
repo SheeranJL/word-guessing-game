@@ -42,7 +42,7 @@ export const Provider = (props) => {
       setIncorrectCount(0);
       setSelectedKey([]);
       setFirstRender(false);
-      setTimer(1222);
+      setTimer(60);
       setPauseTimer(true);
       console.log('rendering')
     }
