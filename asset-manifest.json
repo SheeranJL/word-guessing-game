@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/word-guessing-game/static/css/main.e2b79d16.css",
+    "main.js": "/word-guessing-game/static/js/main.6b3c4623.js",
+    "static/js/787.3a4c7149.chunk.js": "/word-guessing-game/static/js/787.3a4c7149.chunk.js",
+    "index.html": "/word-guessing-game/index.html",
+    "main.e2b79d16.css.map": "/word-guessing-game/static/css/main.e2b79d16.css.map",
+    "main.6b3c4623.js.map": "/word-guessing-game/static/js/main.6b3c4623.js.map",
+    "787.3a4c7149.chunk.js.map": "/word-guessing-game/static/js/787.3a4c7149.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e2b79d16.css",
+    "static/js/main.6b3c4623.js"
+  ]
+}
