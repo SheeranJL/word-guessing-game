@@ -9,7 +9,7 @@ const Time = () => {
   return (
     <div className='timer'>
       <h3 className='heading'>REMAINING TIME</h3>
-      <span className={ timer <= 10 ? 'time red-time' : 'time' }>{timer}</span>
+      <span className={ timer <= 15 ? 'time red-time' : 'time' }>{timer}</span>
     </div>
   )
 

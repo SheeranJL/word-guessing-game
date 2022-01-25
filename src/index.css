@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-image: url('https://images.wallpaperscraft.com/image/single/letters_alphabet_colorful_136801_1920x1080.jpg')
 }
 
 code {

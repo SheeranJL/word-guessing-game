@@ -25,47 +25,52 @@ export const Provider = (props) => {
   const [gameWin, setGameWin] = useState(false);
   const [timer, setTimer] = useState(null);
   const [pauseTimer, setPauseTimer] = useState(true);
-
+  const [rendering, setRendering] = useState(true);
 
   const filterSpaces = gameKey.filter((key, index) => key !== ' ')
   const removeDuplicates = filterSpaces.filter((item, index) => filterSpaces.indexOf(item) === index);
 
 
-
   useEffect( () => {
     if (firstRender === true || gameOver === true || gameWin === true || pauseTimer === true) {
-      const randomNum = Math.floor(Math.random() * phrases.length)
-      const phrase = phrases[randomNum];
-      setGameKey(phrase.split(''))
-      setCorrectKeys([]);
-      setCorrectCount(0);
-      setIncorrectCount(0);
-      setSelectedKey([]);
-      setFirstRender(false);
+      if (rendering) {
+        const randomNum = Math.floor(Math.random() * phrases.length)
+        const phrase = phrases[randomNum];
+        setGameKey(phrase.split(''))
+        setCorrectKeys([]);
+        setCorrectCount(0);
+        setIncorrectCount(0);
+        setSelectedKey([]);
+        setFirstRender(false);
+        setTimer(60);
+        setPauseTimer(true);
+        setRendering(false)
+      }
       setTimer(60);
-      setPauseTimer(true);
-      console.log('rendering')
     }
 
     if (incorrectCount >= 3) {
       setGameOver(true);
       setPauseTimer(true)
+      setRendering(true)
     } else if (correctCount >= scoreToWin && scoreToWin !== 0) {
       setGameWin(true);
       setPauseTimer(true)
+      setRendering(true)
     } else if (timer === 0) {
       setPauseTimer(true);
       setGameOver(true);
+      setRendering(true)
     }
 
     setScoreToWin(removeDuplicates.length)
 
   }, [incorrectCount, firstRender, gameOver, correctCount, gameWin, timer]);
 
+
+
   const checkGuess = (guess) => {
-
     const doesLetterExist = gameKey.find((letter => letter.toLowerCase() === guess.toLowerCase()))
-
 
       if (doesLetterExist === guess) {
 
@@ -105,16 +110,14 @@ export const Provider = (props) => {
 
   function startTimer() {
 
-    if (!pauseTimer) {
-      setTimeout( () => {
-        setTimer(timer - 1)
-      }, 1000)
+      if (!pauseTimer) {
+        setTimeout( () => {
+          setTimer(timer - 1)
+        }, 1000)
+      }
     }
-  }
 
-
-
-  startTimer()
+startTimer()
 
 
 

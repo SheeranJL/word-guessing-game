@@ -5,16 +5,18 @@
   color: transparent;
   background-color: #d2d2d2;
   border-radius: 5px;
-  margin: 5px;
+  margin: 4px;
   align-self: center;
   align-content: center;
   bottom: 0;
   text-align: center;
   padding: 30px 1px 0 1px;
+  box-shadow: 1px 1px 5px 1px grey;
 }
 
 .show {
   background-color: green;
   transition-duration: 1s;
   color: white;
+  box-shadow: 1px 1px 20px 1px green;
 }

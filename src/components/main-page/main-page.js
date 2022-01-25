@@ -15,10 +15,19 @@ const MainPage = () => {
 
   return (
     <div className='main-page'>
-      <h1 className='title'> WORD GUESSING GAME</h1>
-      <GameLetters />
-      <KeyboardLetters />
-      <LivesAndTime />
+      <div className='title-background'>
+        <h1 className='title' style={{fontSize: '24px', color: 'white'}}> PHRASE GUESSING GAME</h1>
+      </div>
+
+        <GameLetters />
+
+      <div className='keyboard-letters-container'>
+        <KeyboardLetters />
+      </div>
+
+      <div className='lives-letters-container'>
+        <LivesAndTime />
+      </div>
 
         {
           gameOver ? <Modal message='YOU LOSE!' /> : null

@@ -2,7 +2,6 @@
 .modal-overlay {
   display: flex;
   justify-content: center;
-  align-items: center;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -14,13 +13,13 @@
   .modal-container {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 40%;
     justify-content: center;
     align-items: center;
     border: 2px solid black;
     align-self: center;
     position: absolute;
-    height: 40%;
+    height: 50%;
     border-radius: 5%;
 
 
@@ -33,6 +32,15 @@
     .modal-button {
       width: 30%;
       height: 50px;
+      border: none;
+      border-radius: 5px;
+      font-size: 24px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: grey;
+        color: white;
+      }
     }
 
     .face {

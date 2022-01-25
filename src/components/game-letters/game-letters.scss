@@ -1,7 +1,9 @@
 .game-letters-container {
   display: flex;
-  justify-content: center;
   list-style: none;
   flex-wrap: wrap;
+  min-width: 100%;
+  justify-content: center;
+  padding-left: 0;
 
 }
